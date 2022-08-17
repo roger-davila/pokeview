@@ -1,0 +1,16 @@
+{
+  "name": "sleep-bot",
+  "version": "1.0.0",
+  "description": "unwind reminder bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roger Davila",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.2.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}
