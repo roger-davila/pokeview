@@ -1,4 +1,4 @@
-import * as pokemonAPI from '../utils/pokemon-api';
+const pokemonAPI =  require('../utils/pokemon-api');
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
@@ -6,6 +6,7 @@ module.exports = {
     .setName('pokemon')
     .setDescription('Get Pokemon Sprite'),
   async execute(interaction) {
-    await interaction.reply('Fetching Pokemon');
+    const pokemon = await pokemonAPI.getPokemon(interaction.commandName);
+    await interaction.reply(pokemon);
   },
 };

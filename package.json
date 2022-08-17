@@ -1,7 +1,7 @@
 {
-  "name": "sleep-bot",
+  "name": "pokestat-bot",
   "version": "1.0.0",
-  "description": "unwind reminder bot",
+  "description": "pokemon stat bot",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
