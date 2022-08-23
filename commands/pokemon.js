@@ -1,12 +1,14 @@
-const pokemonAPI =  require('../utils/pokemon-api');
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('pokemon')
-    .setDescription('Get Pokemon Sprite'),
+    .setDescription('Get Pokemon Sprite')
+    .addStringOption((option) => 
+      option.setName('pokemon')
+      .setDescription('Pokemon Name')
+    ),
   async execute(interaction) {
-    const pokemon = await pokemonAPI.getPokemon(interaction.commandName);
-    await interaction.reply(pokemon);
+    console.log('Command was run.');
   },
 };
