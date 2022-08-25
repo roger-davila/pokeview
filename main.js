@@ -1,8 +1,8 @@
 require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const pokemonAPI = require('./utils/pokemon-api');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -38,13 +38,21 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (message) => {
   if (!message.content.startsWith('!ps ')) return;
+
   let commands = message.content.replace('!ps ', '');
   commands = commands.split(' ');
-  console.log(commands);
-  // Currently responds with an error if the pokemon might have a different form like Deoxys and Giratina
-  const pokemon = await pokemonAPI.getPokemon(commands[0]);
-  console.log(pokemon);
-  message.channel.send(pokemon.sprites.front_default);
+
+  const pokemonName = commands[0];
+
+  try {
+    // Currently responds with an error if the pokemon might have a different form like Deoxys and Giratina
+    const pokemon = await pokemonAPI.getPokemon(pokemonName);
+    console.log(pokemon);
+    message.channel.send(pokemon.sprites.front_default);
+  } catch (error) {
+    console.error(error);
+    message.reply(`${pokemonName} is not a valid pokemon name`);
+  }
 });
 
 require('./server');
