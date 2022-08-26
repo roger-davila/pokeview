@@ -15,12 +15,8 @@ module.exports = {
         .setDescription('Show shiny sprite')
         .setRequired(true)),
   async execute(interaction) {
-    console.log(interaction);
-    console.log(interaction.channelId);
     const pokemonName = interaction.options.getString('name');
     const isShiny = interaction.options.getBoolean('shiny');
-    console.log(pokemonName);
-    console.log(isShiny);
     const pokemon = await pokemonAPI.getPokemon(pokemonName);
     await interaction.reply({ embeds: [pokemonEmbed.embedBuilder(parsePokemonData(pokemon), isShiny)] });
   },
