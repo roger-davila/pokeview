@@ -7,6 +7,7 @@ function embedBuilder(pokemon, isShiny) {
     .setTitle(stringy.properCase(pokemon.name))
     .setDescription('Description of the pokemon here')
     .setImage(isShiny ? pokemon.sprites.frontShiny : pokemon.sprites.front)
+    .setFields([...Object.entries(pokemon.stats)].map((stat) => ({ name: stat[0], value: stat[1].toString(), inline: true })))
   return pokemonEmbed;
 }
 
