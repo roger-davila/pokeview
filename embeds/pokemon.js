@@ -24,14 +24,14 @@ function embedBuilder(pokemon, isShiny) {
   return pokemonEmbed;
 }
 
-module.exports = {
-  embedBuilder
-}
-
 function mutateStatsToFieldObject(pokemon) {
   return Object.entries(pokemon.stats).map((stat) => {
     return { 
       name: `${emojiMap.get(stat[0])[1]} **${emojiMap.get(stat[0])[0]}:** \`${stat[1]}\`​`, 
       value: `${':green_square: '.repeat(Math.ceil(stat[1] / BLOCK_UNIT))} ${':black_large_square: '.repeat(8 - Math.ceil(stat[1] / BLOCK_UNIT))}`
     }});
+}
+
+module.exports = {
+  embedBuilder
 }
